@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+        header{
+            background: #f7f7f7;
+        }
+
+        .icon img{
+            padding: 20px;
+        }
+        .banner {
+            background: #f7f7f7;
+        }
+        .banner .container{
+            position: relative;
+        }
+        .banner--title{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .banner--title h2 {
+            font-size: 100pt;
+            opacity: 0.4;
+            color: #ffffff;
+            font-weight: normal;
+        }
+        .banner--title h3{
+            font-size: 70pt;
+            opacity: 0.4;
+            color: #ffffff;
+        }
+        .btn{
+            font-size: 16px;
+        }
+        .btn:hover{
+            opacity: 1;
+            transition-duration: 1s ;
+        }
+        .banner{
+            margin-bottom: 80px;
+        }
+        <!--endbanner-->
+            .course-categories{
+                background: #f7f7f7;
+            }
+        .course-categories-heading{
+            padding-top: 30px;
+        }
+        .your-project-row{
+            background: #ee5926;
+        }
+        .your-project-tittle{
+            margin-right: -20px;
+            padding: 80px 30px 0px 30px;
+        }
+        .jumbotron-title{
+            font-size: 30pt;
+            margin-bottom: 50px;
+        }
+        .jumbotron-title-text{
+            color: #ffffff;
+        }
+        .jumbotron-lead{
+            font-size: 12pt;
+        }
+        .your-project{
+            margin: 80px 0px;
+        }
+
+        .footer-end{
+            background: #252526;
+            color: #ffffff;
+            padding-top: 40px;
+        }
+        .footer-end--row{
+            padding-bottom: 60px;
+        }
+        .footer-end--lead{
+            margin-top: 40px;
+            font-size: 11pt;
+            margin-bottom: 40px;
+        }
+        .ft-end-address{
+            margin-bottom: 20px;
+            font-size: 11pt;
+        }
+        .footer-end--tile{
+            font-size: 18pt;
+            margin-bottom: 50px;
+        }
+        .footer-end--media-img{
+            width: 100px;
+            margin-bottom: 30px;
+        }
+        .media-body h5{
+            font-size: 11pt;
+        }
+        .footer-end--col ul{
+            list-style: none;
+            margin-left: -40px;
+        }
+        .footer-end--col ul li p a {
+            color: #ffffff;
+            font-size: 11pt;
+        }
+        .ft-last{
+            background: #313233;
+            text-align: center;
+            font-size: 10pt;
+        }
+        .ft-last--text{
+            color: #ffffff;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+        .ft-last--text a{
+            color: #ee5926;
+        }
+
+    </style>
+</head>
+
+<body style="font-family: 'Pacifico' ;">
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a href="trangchu" class="navbar-brand">HomePage</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="phongban">Departs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nhanvien">Staffs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kyluat">Records</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <th:block th:each="user : ${listOnly}">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span th:text="${user.username}"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Change Password</a>
+                            <a class="dropdown-item" href="/">Log out</a>
+                        </div>
+                        </th:block>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<!--end header-->
+<section class="banner">
+    <div class="container">
+        <div class="banner--img">
+            <img src="https://images.pexels.com/photos/368893/pexels-photo-368893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid " alt="">
+        </div>
+        <div class="banner--title w-75">
+            <div class="title">
+                <h2>Photo with
+                </h2>
+                <h3> Pixivu</h3>
+            </div>
+            <div class="banner-btn">
+                <a class="btn btn-outline-dark btn-lg" href="#" role="button">View more</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--end banner-->
+<section class="course-categories">
+    <div class="container">
+        <div class="section-title course-categories-heading">
+            <h2 class="course-categories-heading__title">Course Categories</h2>
+        </div>
+        <!--end -->
+        <div class="course-categories-item">
+            <div class="row">
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/2884/building-vintage-bike-monument.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/534362/pexels-photo-534362.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/247938/pexels-photo-247938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/545008/pexels-photo-545008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/3765180/pexels-photo-3765180.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/849835/pexels-photo-849835.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/347226/pexels-photo-347226.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/3799788/pexels-photo-3799788.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/593324/pexels-photo-593324.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/3690052/pexels-photo-3690052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+                <div class="col-3 mb-4">
+                    <img src="https://images.pexels.com/photos/2101704/pexels-photo-2101704.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt="Responsive image">
+                </div>
+                <!--end col-3-->
+            </div>
+        </div>
+</section>
+<!--end course-categories-->
+<section class="your-project">
+    <div class="container">
+        <div class="your-project-row ">
+            <div class="row">
+                <div class="col-4">
+                    <div class="your-project-tittle">
+                        <h4 class="jumbotron-title">Only <span class="jumbotron-title-text">the best</span> for your
+                            project
+                        </h4>
+                        <p class="jumbotron-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at
+                            ultricies arcu. Phasellus aliquet, tortor ut pharetra euismod, nibh ante congue ex, eget
+                            iaculis felis velit a tortor. Aliquam et laoreet mauris, quis auctor nisi. Class </p>
+                        <a class="btn btn-outline-dark btn-lg" href="#" role="button">View More</a>
+                    </div>
+                </div>
+                <!--end col-4-->
+                <div class="your-project-img col">
+                    <a href="#"><img src="https://images.pexels.com/photos/590478/pexels-photo-590478.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="img-fluid" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <section class="footer-end">
+        <div class="container">
+            <div class="footer-end--row ">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="./header/logoend.png" alt="" />
+                        <p class="footer-end--lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                            efficitur vel turpis sed pellentesque. </p>
+                        <div class="ft-end-address">
+                            322 Broadway New York, NY 10038, USA
+                        </div>
+                        <div class="ft-end-address">
+                            +1-800-555-5555
+                        </div>
+                        <div class="ft-end-address">
+                            adeptcourses@mail.com
+                        </div>
+                    </div>
+                    <!--end col-4-->
+                    <div class="col-4">
+                        <h2 class="footer-end--tile">Popular Course</h2>
+                        <div class="footer-end--media media">
+                            <img src="https://images.pexels.com/photos/442573/pexels-photo-442573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                 class="footer-end--media-img mr-3 img-fluid" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Adobe Illustrator CC Tutorial - Training Taught By Experts</h5>
+                            </div>
+                        </div>
+                        <!--end footer-end--media-->
+                        <div class="footer-end--media media">
+                            <img src="https://images.pexels.com/photos/1478477/pexels-photo-1478477.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                 class="footer-end--media-img mr-3 img-fluid" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Sketching for UX Designers - Boost UX work with pen & paper</h5>
+                            </div>
+                        </div>
+                        <!--end footer-end--media-->
+                        <div class="footer-end--media media">
+                            <img src="https://images.pexels.com/photos/1151300/pexels-photo-1151300.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                 class="footer-end--media-img mr-3 img-fluid" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Watercolor painting for the complete beginner - First steps</h5>
+                            </div>
+                        </div>
+                        <!--end footer-end--media-->
+                    </div>
+                    <!--end col-4-->
+                    <div class="col-4">
+                        <h2 class="footer-end--tile">Cources Categories</h2>
+                        <div class="footer-end-list row">
+                            <div class=" col-6">
+                                <div class="footer-end--col">
+                                    <ul>
+                                        <li>
+                                            <p><a href="#">Development</a></p>
+                                            <p><a href="#">Business</a></p>
+                                            <p><a href="#">IT & Software</a></p>
+                                            <p><a href="#">Office Productivity</a></p>
+                                            <p><a href="#">Personal Development</a></p>
+                                            <p><a href="#">Design</a></p>
+                                            <p><a href="#">Marketing</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--end footer-end--col col-6-->
+                            <div class="col-6">
+                                <div class="footer-end--col">
+                                    <ul>
+                                        <li>
+                                            <p><a href="#">Lifestyle</a></p>
+                                            <p><a href="#">Photography</a></p>
+                                            <p><a href="#">Health & Fitness</a></p>
+                                            <p><a href="#">Music</a></p>
+                                            <p><a href="#">Academics</a></p>
+                                            <p><a href="#">Language</a></p>
+                                            <p><a href="#">Test Prep</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--end footer-end--col col-6-->
+                        </div>
+                        <!--end footer-end-list-->
+                    </div>
+                    <!--end col-4-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end footer-end-->
+    <section class="ft-last">
+        <div class="container">
+            <div class="ft-last--text">
+                <p>
+                    Theme by <a href="#">BestWebSoft</a>. ©2017 All Rights Reserved</p>
+            </div>
+            <!--endft-last--text-->
+        </div>
+    </section>
+    <!--end ft-last-->
+</footer>
+</body>
+</html>

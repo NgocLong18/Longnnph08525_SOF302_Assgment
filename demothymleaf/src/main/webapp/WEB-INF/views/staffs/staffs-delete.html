@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        header {
+            background: #f7f7f7;
+        }
+
+        .footer-end {
+            background: #252526;
+            color: #ffffff;
+            padding-top: 40px;
+        }
+
+        .footer-end--row {
+            padding-bottom: 60px;
+        }
+
+        .footer-end--lead {
+            margin-top: 40px;
+            font-size: 11pt;
+            margin-bottom: 40px;
+        }
+
+        .ft-end-address {
+            margin-bottom: 20px;
+            font-size: 11pt;
+        }
+
+        .footer-end--tile {
+            font-size: 16pt;
+            margin-bottom: 50px;
+        }
+
+        .footer-end--media-img {
+            width: 100px;
+            margin-bottom: 30px;
+        }
+
+        .media-body h5 {
+            font-size: 11pt;
+        }
+
+        .footer-end--col ul {
+            list-style: none;
+            margin-left: -40px;
+        }
+
+        .footer-end--col ul li p a {
+            color: #ffffff;
+            font-size: 11pt;
+        }
+
+        .ft-last {
+            background: #313233;
+            text-align: center;
+            font-size: 10pt;
+        }
+
+        .ft-last--text {
+            color: #ffffff;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        .ft-last--text a {
+            color: #ee5926;
+        }
+
+        input{
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body style="font-family: 'Pacifico' " >
+<header>
+    <div class = "container" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a href="#" class="navbar-brand">HomePage</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Departs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Staffs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Records</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+</header>
+
+<main style="text-align: center;">
+    <div class="container">
+        <h2>Delete Staffs</h2>
+        <form th:action="@{/staffs/staffs-delete}" method="POST" th:object="${staffs}" class="mt-5 mb-5">
+            <label for="">Staff ID</label>
+            <input th:field="*{staffId}" readonly="true" class="form-control" /> <br/> <br/>
+            <label for="">Name </label>
+            <input th:field="*{staffName}" readonly="true" class="form-control"/> <br/> <br/>
+            <label for="">Gender</label>
+            <input th:field="*{gender}" readonly="true" class="form-control"/> <br/> <br/>
+            <label for="">Birthtday</label>
+            <input th:field="*{birthday}" readonly="true" class="form-control" /> <br/> <br/>
+            <label for="">Photo</label>
+            <input th:field="*{photo}" readonly="true" class="form-control" /> <br/> <br/>
+            <label for="">Email</label>
+            <input th:field="*{mail}" readonly="true"class="form-control"/> <br/> <br/>
+            <label for="">Phone</label>
+            <input th:field="*{phone}" readonly="true"class="form-control"/> <br/> <br/>
+            <label for="">Salary</label>
+            <input th:field="*{salary}" readonly="true" class="form-control"/> <br/> <br/>
+            <label for="">Depart Id</label>
+            <input th:field="*{departID}" readonly="true" class="form-control"/> <br/> <br/>
+            <p>If you are sure you want to delete this person, please write "deleted" in the box Status Of Staff  !!!</p>
+            <label for="">Status Of Staff</label>
+            <input th:field="*{statusOfStaff}" class="form-control"/> <br/> <br/>
+            <button type="submit" class="btn-outline-dark btn mt-3">Delete</button>
+        </form>
+        <th:block th:if="${message}">
+            <p th:text="${message}" style="color: red; font-size: medium" />
+        </th:block>
+    </div>
+</main>
+<footer>
+    <section class="footer-end">
+        <div class="container">
+            <div class="footer-end--row ">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="./header/logoend.png" alt="" />
+                        <p class="footer-end--lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                            efficitur vel turpis sed pellentesque. </p>
+                        <div class="ft-end-address">
+                            322 Broadway New York, NY 10038, USA
+                        </div>
+                        <div class="ft-end-address">
+                            +1-800-555-5555
+                        </div>
+                        <div class="ft-end-address">
+                            adeptcourses@mail.com
+                        </div>
+                    </div>
+                    <!--end col-4-->
+                    <div class="col-4">
+                        <h2 class="footer-end--tile">Popular Course</h2>
+                        <div class="footer-end--media media">
+                            <img src="https://images.pexels.com/photos/442573/pexels-photo-442573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                 class="footer-end--media-img mr-3 img-fluid" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Adobe Illustrator CC Tutorial - Training Taught By Experts</h5>
+                            </div>
+                        </div>
+                        <!--end footer-end--media-->
+                        <div class="footer-end--media media">
+                            <img src="https://images.pexels.com/photos/1478477/pexels-photo-1478477.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                 class="footer-end--media-img mr-3 img-fluid" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Sketching for UX Designers - Boost UX work with pen & paper</h5>
+                            </div>
+                        </div>
+                        <!--end footer-end--media-->
+                        <div class="footer-end--media media">
+                            <img src="https://images.pexels.com/photos/1151300/pexels-photo-1151300.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                 class="footer-end--media-img mr-3 img-fluid" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Watercolor painting for the complete beginner - First steps</h5>
+                            </div>
+                        </div>
+                        <!--end footer-end--media-->
+                    </div>
+                    <!--end col-4-->
+                    <div class="col-4">
+                        <h2 class="footer-end--tile">Course Categories</h2>
+                        <div class="footer-end-list row">
+                            <div class=" col-6">
+                                <div class="footer-end--col">
+                                    <ul>
+                                        <li>
+                                            <p><a href="#">Development</a></p>
+                                            <p><a href="#">Business</a></p>
+                                            <p><a href="#">IT & Software</a></p>
+                                            <p><a href="#">Office Productivity</a></p>
+                                            <p><a href="#">Personal Development</a></p>
+                                            <p><a href="#">Design</a></p>
+                                            <p><a href="#">Marketing</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--end footer-end--col col-6-->
+                            <div class="col-6">
+                                <div class="footer-end--col">
+                                    <ul>
+                                        <li>
+                                            <p><a href="#">Lifestyle</a></p>
+                                            <p><a href="#">Photography</a></p>
+                                            <p><a href="#">Health & Fitness</a></p>
+                                            <p><a href="#">Music</a></p>
+                                            <p><a href="#">Academics</a></p>
+                                            <p><a href="#">Language</a></p>
+                                            <p><a href="#">Test Prep</a></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--end footer-end--col col-6-->
+                        </div>
+                        <!--end footer-end-list-->
+                    </div>
+                    <!--end col-4-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end footer-end-->
+    <section class="ft-last">
+        <div class="container">
+            <div class="ft-last--text">
+                <p>
+                    Theme by <a href="#">BestWebSoft</a>. ©2017 All Rights Reserved</p>
+            </div>
+            <!--endft-last--text-->
+        </div>
+    </section>
+    <!--end ft-last-->
+</footer>
+</body>
+
+</html>
